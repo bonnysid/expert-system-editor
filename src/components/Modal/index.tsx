@@ -1,14 +1,14 @@
-import React, { FC, useRef } from 'react';
+import React, { FC, PropsWithChildren, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import * as ST from './styled';
 
-interface IProps {
+interface IProps extends PropsWithChildren {
     title: string;
     isShow: boolean;
     onClose: () => void;
 }
 
-const Popup: FC<IProps> = ({ title, isShow, children, onClose }) => {
+export const Modal: FC<IProps> = ({ title, isShow, children, onClose }) => {
     const wrapperRef = useRef<HTMLDivElement | null>(null);
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -33,5 +33,3 @@ const Popup: FC<IProps> = ({ title, isShow, children, onClose }) => {
         document.body,
     );
 };
-
-export default Popup;

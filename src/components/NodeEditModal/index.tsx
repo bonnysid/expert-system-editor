@@ -1,15 +1,13 @@
-import React, { FC, useState } from 'react';
-import Popup from 'src/components/Popup';
-import Input from 'src/components/Input';
-import { useActions } from 'src/hooks/useActions';
-import Button from '../Button';
-import { BtnTypes } from 'src/components/Button/styled';
+import React, { FC, useEffect, useState } from 'react';
+import { Input, BtnTypes, Button, Modal } from '../../components';
+import { useNode } from '../../providers';
 import styled from 'styled-components';
+import { INode } from '../../types';
 
 interface IProps {
     isShow: boolean;
     onClose: () => void;
-    nodeId?: string;
+    node?: INode;
 }
 
 const Row = styled.div`
@@ -19,25 +17,34 @@ const Row = styled.div`
   margin-top: 24px;
 `;
 
-const NodeEditPopup: FC<IProps> = ({ isShow, onClose, nodeId }) => {
-    const { deleteNode } = useActions();
+export const NodeEditModal: FC<IProps> = ({ isShow, onClose, node }) => {
+    const [text, setText] = useState(node?.text || '');
+    const { removeNode, updateNode } = useNode();
 
     const remove = () => {
-        if (nodeId) {
-            deleteNode(nodeId);
-            onClose();
-        }
+        removeNode(node?.id || '');
+        onClose();
     }
 
+    const save = () => {
+        updateNode(node?.id || '', { text });
+        onClose();
+    }
+
+    useEffect(() => {
+        if (node) {
+            setText(node.text);
+        }
+    }, [node]);
+
     return (
-        <Popup isShow={isShow} onClose={onClose} title="Edit node">
-            <Input disabled value={nodeId} label={`ID: ${nodeId}`} />
+        <Modal isShow={isShow} onClose={onClose} title="Edit node">
+            <Input type={'text'} disabled value={''} label={`ID: ${node?.id}`} />
+            <Input type={'text'} value={text} label={`Text`} onChange={setText} />
             <Row>
-                <Button>Save</Button>
+                <Button onClick={save}>Save</Button>
                 <Button btnType={BtnTypes.error} onClick={remove}>Delete</Button>
             </Row>
-        </Popup>
+        </Modal>
     );
 };
-
-export default NodeEditPopup;

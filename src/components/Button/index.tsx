@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
-import * as ST from './styled';
+import React, { FC, PropsWithChildren } from 'react';
 import { BtnTypes } from './styled';
+import * as ST from './styled';
 
-interface IProps {
+interface IProps extends PropsWithChildren {
     btnType?: BtnTypes;
     onClick?: () => void;
 }
 
-const Button: FC<IProps> = ({btnType = BtnTypes.success, children, onClick}) => {
+export const Button: FC<IProps> = ({btnType = BtnTypes.success, children, onClick}) => {
     return (
         <ST.Container btnType={btnType} onClick={onClick}>
             {children}
@@ -15,4 +15,4 @@ const Button: FC<IProps> = ({btnType = BtnTypes.success, children, onClick}) => 
     );
 };
 
-export default Button;
+export { BtnTypes } from './styled';

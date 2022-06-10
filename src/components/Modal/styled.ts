@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { COLORS } from 'src/constants/utils';
-import close from 'src/assets/img/close.svg';
+import { COLORS } from '../../constants/utils';
+import close from '../../assets/img/close.svg';
 
 export const Wrapper = styled.div`
   display: flex;

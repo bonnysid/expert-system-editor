@@ -9,7 +9,7 @@ interface IProps {
     type?: HTMLInputTypeAttribute;
 }
 
-const Input: FC<IProps> = ({ label, value, onChange, type = 'number', disabled }) => {
+export const Input: FC<IProps> = ({ label, value, onChange, type = 'number', disabled }) => {
     return (
         <ST.Container>
             <ST.Label>{label}</ST.Label>
@@ -17,5 +17,3 @@ const Input: FC<IProps> = ({ label, value, onChange, type = 'number', disabled }
         </ST.Container>
     );
 };
-
-export default Input;

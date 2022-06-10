@@ -1,13 +1,13 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import RubikLight from 'src/assets/fonts/Rubik-Light.ttf';
-import RubikRegular from 'src/assets/fonts/Rubik-Regular.ttf';
-import RubikMedium from 'src/assets/fonts/Rubik-Medium.ttf';
-import RubikSemiBold from 'src/assets/fonts/Rubik-SemiBold.ttf';
-import RubikBold from 'src/assets/fonts/Rubik-Bold.ttf';
-import RubikExtraBold from 'src/assets/fonts/Rubik-ExtraBold.ttf';
-import RubikBlack from 'src/assets/fonts/Rubik-Black.ttf';
-import { COLORS } from 'src/constants/utils';
-import { NAVBAR_HEIGHT } from 'src/components/Navbar/data';
+import RubikLight from './assets/fonts/Rubik-Light.ttf';
+import RubikRegular from './assets/fonts/Rubik-Regular.ttf';
+import RubikMedium from './assets/fonts/Rubik-Medium.ttf';
+import RubikSemiBold from './assets/fonts/Rubik-SemiBold.ttf';
+import RubikBold from './assets/fonts/Rubik-Bold.ttf';
+import RubikExtraBold from './assets/fonts/Rubik-ExtraBold.ttf';
+import RubikBlack from './assets/fonts/Rubik-Black.ttf';
+import { COLORS } from './constants/utils';
+import { NAVBAR_HEIGHT } from './components';
 
 export const GlobalStyles = createGlobalStyle`
   * {

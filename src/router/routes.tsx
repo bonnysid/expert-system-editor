@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from '../pages/Main';
+import { MainPage, EditorPage } from '../pages';
 
 interface IRoute {
     path: string;
@@ -9,9 +9,10 @@ interface IRoute {
 
 export enum RouteNames {
     MAIN = '/',
-    THEME_PAGE = '/:theme',
+    EDITOR = '/editor',
 }
 
 export const routes: IRoute[] = [
-    { path: RouteNames.MAIN, element: <Main />, exact: true },
+    { path: RouteNames.MAIN, element: <MainPage />, exact: true },
+    { path: RouteNames.EDITOR, element: <EditorPage />, exact: true },
 ];
